@@ -13,10 +13,15 @@ const messages = [
   }
 ];
 
+const links = [
+  { href: "/", text: "Home" },
+  { href: "new", text: "New Message" },
+];
+
 const indexRouter = Router();
 
 indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages: messages});
+  res.render("index", { title: "Mini Messageboard", messages: messages, links: links});
 });
 
 module.exports = indexRouter;

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
+    <%- include('navbar', {links: links}) %>
     <h1><%- title %></h1>
     <ul>
       <% messages.forEach((message) => { %>
