@@ -4,6 +4,15 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <h1>Index Page</h1>
+    <h1><%- title %></h1>
+    <ul>
+      <% messages.forEach((message) => { %>
+        <div>
+          <h2><%- message.user %></h2>
+          <p><%- message.text %></p>
+          <p><%- message.added %></p>
+        </div>
+      <% }); %>
+    </ul>
   </body>
 </html>
