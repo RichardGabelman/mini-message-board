@@ -24,6 +24,15 @@ indexRouter.get("/", (req, res) => {
   res.render("index", { title: "Mini Messageboard", messages: messages, links: links});
 });
 
+indexRouter.get("/:user/:message", (req, res) => {
+  const urlUser = req.params["user"];
+  const urlMessage = req.params["message"];
+  const message = messages.find((message) => {
+    return (urlUser === message.user && urlMessage === message.text);
+  })
+  res.render("message", { message: message, links: links });
+});
+
 indexRouter.get("/new", (req, res) => {
   res.render("form", { title: "New Message", links: links });
 });
