@@ -8,7 +8,7 @@ const links = [
 ];
 
 newRouter.get("/", (req, res) => {
-  res.render("form", { links: links });
+  res.render("form", { title: "New Message", links: links });
 });
 
 module.exports = newRouter;
