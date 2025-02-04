@@ -29,7 +29,8 @@ indexRouter.get("/new", (req, res) => {
 });
 
 indexRouter.post("/new", (req, res) => {
-  res.send("Form submitted");
+  messages.push({ text: req.body.message, user: req.body.author, added: new Date() });
+  res.redirect("/");
 });
 
 module.exports = indexRouter;
