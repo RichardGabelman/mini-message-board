@@ -1,4 +1,4 @@
-const { Client } = required("pg");
+const { Client } = require("pg");
 const { argv } = require("node:process");
 
 const SQL = `
