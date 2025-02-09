@@ -6,9 +6,9 @@ async function getAllMessages() {
 }
 
 async function getMessageByIndex(index) {
-  const { row } = await pool.query("SELECT * FROM messages WHERE id=($1)", [index]);
-  console.log("Row: ", row);
-  return row;
+  const rows = await pool.query("SELECT * FROM messages WHERE id=($1)", [index]);
+  console.log("Row: ", rows[0]);
+  return rows[0];
 }
 
 async function insertMessage(message) {
