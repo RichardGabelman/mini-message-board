@@ -7,6 +7,7 @@ async function getAllMessages() {
 
 async function getMessageByIndex(index) {
   const { row } = await pool.query("SELECT * FROM messages WHERE id=($1)", [index]);
+  console.log("Row: ", row);
   return row;
 }
 
