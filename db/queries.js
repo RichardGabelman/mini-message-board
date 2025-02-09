@@ -11,7 +11,7 @@ async function getMessageByIndex(index) {
 }
 
 async function insertMessage(message) {
-  await pool.query("INSERT INTO messages (user, text, added) VALUES (($1), ($2), ($3))", [message.user, message.text, message.added]);
+  await pool.query(`INSERT INTO messages ("user", text, added) VALUES (($1), ($2), ($3))`, [message.user, message.text, message.added]);
 }
 
 module.exports = {
