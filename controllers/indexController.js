@@ -23,7 +23,7 @@ function getNewForm(req, res) {
 
 async function postNewForm(req, res) {
   const text = req.body.message;
-  const user = req.body.user;
+  const user = req.body.author;
   const date = new Date();
   const message = { text, user, date};
   await db.insertMessage(message);
