@@ -13,6 +13,9 @@ async function getAllMessages(req, res) {
 
 async function getMessageByIndex(req, res) {
   const index = req.params["index"];
+  if (isNaN(index)) {
+    res.redirect("/");
+  }
   let message = await db.getMessageByIndex(index);
   res.render("message", { message: message, links: links });
 }
