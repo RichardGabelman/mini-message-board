@@ -1,45 +1,14 @@
 const { Router } = require("express");
-
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
-
-const links = [
-  { href: "/", text: "Home" },
-  { href: "new", text: "New Message" },
-];
+const { getAllMessages, getMessageByIndex, getNewForm, postNewForm } = require("../controllers/indexController");
 
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages: messages, links: links});
-});
+indexRouter.get("/", getAllMessages);
 
-indexRouter.get("/:user/:message", (req, res) => {
-  const urlUser = req.params["user"];
-  const urlMessage = req.params["message"];
-  const message = messages.find((message) => {
-    return (urlUser === message.user && urlMessage === message.text);
-  })
-  res.render("message", { message: message, links: links });
-});
+indexRouter.get("/:index", getMessageByIndex);
 
-indexRouter.get("/new", (req, res) => {
-  res.render("form", { title: "New Message", links: links });
-});
+indexRouter.get("/new", getNewForm);
 
-indexRouter.post("/new", (req, res) => {
-  messages.push({ text: req.body.message, user: req.body.author, added: new Date() });
-  res.redirect("/");
-});
+indexRouter.post("/new", postNewForm);
 
 module.exports = indexRouter;
