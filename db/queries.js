@@ -11,7 +11,8 @@ async function getMessageByIndex(index) {
 }
 
 async function insertMessage(message) {
-  await pool.query(`INSERT INTO messages ("user", text, added) VALUES (($1), ($2), (to_timestamp(${Date.now()} / 1000.0))`, [message.user, message.text]);
+  const timestamp = new Date().getTime() / 1000.0;
+  await pool.query(`INSERT INTO messages ("user", text, added) VALUES (($1), ($2), to_timestamp($3))`, [message.user, message.text, timestamp]);
 }
 
 module.exports = {
